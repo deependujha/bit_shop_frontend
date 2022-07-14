@@ -1,13 +1,26 @@
-import Head from "next/head";
-import Image from "next/image";
 import styles from "../styles/Home.module.css";
-import Link from "next/link";
-import Navbar from "../components/Navbar";
+import Product from "../components/Product";
 
 export default function Home() {
   return (
-    <div className={styles.container} style={{ textDecoration: "none" }}>
-      <Navbar />
+    <div>
+      <Product />
+      <Product />
+      <Product />
+      <Product />
+      <Product />
+      <Product />
+      <Product />
+      <Product />
+      <Product />
+      <Product />
+      <Product />
+      <Product />
+      <Product />
+      <Product />
+      <Product />
+      <Product />
+      <Product />
     </div>
   );
 }
