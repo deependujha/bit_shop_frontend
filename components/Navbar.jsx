@@ -7,9 +7,11 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
-        <a className="navbar-brand" href="/">
+      <Link href="/">
+        <a className="navbar-brand" >
           BIT-shop
         </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -29,17 +31,17 @@ const Navbar = () => {
                 <a className={`nav-link active ${style.myLink}`}>Home</a>
               </li>
             </Link>
-            <Link href="/">
+            <Link href="/about">
               <li className="nav-item">
                 <a className={`nav-link ${style.myLink}`}>About us</a>
               </li>
             </Link>
-            <Link href="/">
+            <Link href="/myOrder">
               <li className="nav-item">
                 <a className={`nav-link ${style.myLink}`}>My orders</a>
               </li>
             </Link>
-            <Link href="/">
+            <Link href="/account">
               <li className="nav-item">
                 <a className={`nav-link ${style.myLink}`}>Account</a>
               </li>

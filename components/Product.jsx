@@ -1,8 +1,12 @@
 import React from "react";
 import style from "../styles/Product.module.css";
 import Image from "next/image";
+import Link from "next/link";
 
 const Product = () => {
+  const clk = () => {
+    console.log(`button clicked`);
+  };
   return (
     <div className={style.myContainer}>
       <div
@@ -21,14 +25,18 @@ const Product = () => {
           alt="myproduct"
         />
       </div>
-      
+
       <p style={{ textAlign: "center" }}>Macbook</p>
 
       <p>
         price: <b>400 MDR</b>
-        <button className="btn btn-primary" style={{ float:"right" }}>
-        Buy Now
-      </button>
+        <button
+          className="btn btn-primary"
+          style={{ float: "right" }}
+          onClick={clk}
+        >
+          Buy Now
+        </button>
       </p>
     </div>
   );
