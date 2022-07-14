@@ -1,8 +1,13 @@
 import "../styles/globals.css";
 import "bootstrap/dist/css/bootstrap.css";
 import Head from "next/head";
+import React, { useEffect } from "react";
+// import Script from "next/script";
 
 function MyApp({ Component, pageProps }) {
+  useEffect(() => {
+    import("bootstrap/dist/js/bootstrap");
+  }, []);
   return (
     <>
       <Head>
