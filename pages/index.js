@@ -4,23 +4,20 @@ import Product from "../components/Product";
 export default function Home() {
   return (
     <div>
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
+      <Product type="buy"/>
+      <Product type="buy"/>
+      <Product type="buy"/>
+      <Product type="buy"/>
+      <Product type="buy"/>
+      <Product type="buy"/>
+      <Product type="buy"/>
+      <Product type="buy"/>
+      <Product type="buy"/>
+      <Product type="buy"/>
+      <Product type="buy"/>
+      <Product type="buy"/>
+      <Product type="buy"/>
+
     </div>
   );
 }

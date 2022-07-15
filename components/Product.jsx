@@ -3,7 +3,7 @@ import style from "../styles/Product.module.css";
 import Image from "next/image";
 import Link from "next/link";
 
-const Product = () => {
+const Product = ({ type }) => {
   const clk = () => {
     console.log(`button clicked`);
   };
@@ -31,11 +31,11 @@ const Product = () => {
       <p>
         price: <b>400 MDR</b>
         <button
-          className="btn btn-primary"
+          className={`btn ${type == "buy" ? "btn-primary" : "btn-danger"}`}
           style={{ float: "right" }}
           onClick={clk}
         >
-          Buy Now
+          {type == "buy" ? `Buy Now` : `Cancel`}
         </button>
       </p>
     </div>
