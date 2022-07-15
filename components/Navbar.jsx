@@ -131,7 +131,7 @@ const Navbar = (props) => {
                 </a>
               </li>
             </Link>
-            <Link href="/account">
+            <Link href="/myAccount">
               <li className="nav-item">
                 <a
                   className={`nav-link ${
@@ -141,12 +141,12 @@ const Navbar = (props) => {
                     navBtnClick("account");
                   }}
                 >
-                  Account
+                  My account
                 </a>
               </li>
             </Link>
           </ul>
-          <span className="mx-2">{myAddr != "" && `Hii, Deependu`}</span>
+          <span className="mx-3">{myAddr != "" && `Hii, Deependu`}</span>
           <button
             className={`btn ${con ? `btn-danger` : `btn-info`}`}
             onClick={btnClick}

@@ -3,7 +3,7 @@ import style from "../styles/Product.module.css";
 import Image from "next/image";
 import Link from "next/link";
 
-const Product = ({ type }) => {
+const Product = ({ type, prd }) => {
   const clk = () => {
     console.log(`button clicked`);
   };
@@ -19,19 +19,19 @@ const Product = ({ type }) => {
         }}
       >
         <Image
-          src="/mac.png"
+          src={`http:127.0.0.1:3000/${prd.image}`}
           layout={"fill"}
           objectFit={"contain"}
           alt="myproduct"
         />
       </div>
 
-      <p style={{ textAlign: "center" }}>Macbook</p>
+      <p style={{ textAlign: "center" }}>{prd.product_name}</p>
 
       <p>
-        price: <b>400 MDR</b>
+        price: <b>{prd.price} MDR</b>
         <button
-          className={`btn ${type == "buy" ? "btn-primary" : "btn-danger"}`}
+          className={`btn ${type == "buy" ? "btn-primary" : "btn-danger"} mx-2`}
           style={{ float: "right" }}
           onClick={clk}
         >
