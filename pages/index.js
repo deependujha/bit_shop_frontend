@@ -5,11 +5,13 @@ export default function Home({ data }) {
   return (
     <div className="my-3">
       {data.map((prd) => {
-        return (
-          <span key={prd.product_id}>
-            <Product type="buy" prd={prd} />
-          </span>
-        );
+        if (prd.bought_by == "") {
+          return (
+            <span key={prd.product_id}>
+              <Product type="buy" prd={prd} />
+            </span>
+          );
+        }
       })}
     </div>
   );
