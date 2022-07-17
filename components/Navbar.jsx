@@ -36,6 +36,7 @@ const Navbar = ({
           } else {
             setUserName(`Hii, ${response.data.name}`);
             setCon(true);
+            setLogInStatus(true);
           }
         })
         .catch((e) => {
