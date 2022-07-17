@@ -19,7 +19,7 @@ const Product = ({ type, prd }) => {
         }}
       >
         <Image
-          src={`http:127.0.0.1:5000/${prd.image}`}
+          src={`http://159.223.186.223:3200${prd.image}`}
           layout={"fill"}
           objectFit={"contain"}
           alt="myproduct"
