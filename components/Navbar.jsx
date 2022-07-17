@@ -19,6 +19,8 @@ const Navbar = ({
   setLogInStatus,
   userName,
   setUserName,
+  usrDetails,
+  setUsrDetails,
 }) => {
   const router = useRouter();
 
@@ -34,6 +36,7 @@ const Navbar = ({
             router.push("/myAccount");
             setUserName("Please create an account");
           } else {
+            setUsrDetails(response.data);
             setUserName(`Hii, ${response.data.name}`);
             setCon(true);
             setLogInStatus(true);
@@ -93,9 +96,11 @@ const Navbar = ({
   const btnClick = async () => {
     if (con) {
       setMyContract("");
-      setusrAddr("");
+      setUsrAddr("");
+      setUsrDetails({});
       setCon(false);
       setUserName("");
+      setLogInStatus(false);
     } else {
       connectWithMetaMask();
     }

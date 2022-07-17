@@ -2,12 +2,12 @@ import React from "react";
 import { useRouter } from "next/router";
 import MyOrder from "../components/MyOrder";
 
-const myOrder = ({ usrAddr }) => {
+const myOrder = ({ usrAddr, usrDetails }) => {
   const router = useRouter();
-  if (usrAddr == "") {
+  if (usrDetails.name==undefined) {
     router.push("/myAccount");
   } else {
-    return <MyOrder />;
+    return <MyOrder usrAddr={usrAddr} usrDetails={usrDetails}/>;
   }
 };
 

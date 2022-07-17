@@ -9,7 +9,7 @@ const About = () => {
         ➤ Hi, I'm Deependu Jha, a third-year ECE student at BIT Mesra, Ranchi. I
         made this decentralised shopping application (D-shop).
       </div>
-      <div className="my-3">
+      <div className="my-4">
         <h4>Problem it solves 🧐</h4>
         <div className="my-2">
           ➤ Many fake e-commerce apps take your money, but never deliver the
@@ -22,7 +22,7 @@ const About = () => {
           fraudulent.
         </div>
       </div>
-      <div className="my-3">
+      <div className="my-4">
         <h4>Tech stacks used 👨‍💻</h4>
         <div className="my-2">
           ➤ <b>Frontend:</b> Next.js, and Bootstrap.
@@ -31,7 +31,7 @@ const About = () => {
           Solidity, Infura, Ethers.Js
         </div>
       </div>
-      <div className="my-3">
+      <div className="my-4">
         <h4>Smart-Contract's Token 🪙</h4>
         <div className="my-2">
           <h5>

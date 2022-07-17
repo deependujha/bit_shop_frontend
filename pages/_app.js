@@ -8,7 +8,7 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     import("bootstrap/dist/js/bootstrap");
   }, []);
-
+  const [usrDetails,setUsrDetails]=useState({});
   const [usrAddr, setUsrAddr] = useState("");
   const [myContract, setMyContract] = useState("");
   const [logInStatus, setLogInStatus] = useState(false);
@@ -28,6 +28,8 @@ function MyApp({ Component, pageProps }) {
         setLogInStatus={setLogInStatus}
         userName={userName}
         setUserName={setUserName}
+        usrDetails={usrDetails}
+        setUsrDetails={setUsrDetails}
       />
       <Component
         {...pageProps}
@@ -38,6 +40,8 @@ function MyApp({ Component, pageProps }) {
         setMyContract={setMyContract}
         myContract={myContract}
         setUserName={setUserName}
+        usrDetails={usrDetails}
+        setUsrDetails={setUsrDetails}
       />
     </>
   );

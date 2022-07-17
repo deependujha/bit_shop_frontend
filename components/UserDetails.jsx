@@ -8,17 +8,9 @@ const UserDetails = ({
   setUsrAddr,
   setMyContract,
   setUserName,
+  usrDetails,
+  setUsrDetails,
 }) => {
-  let details = {};
-  useEffect(() => {
-    if (usrAddr != "") {
-      fetch(`http://159.223.186.223:3200/account/${usrAddr}`).then(
-        (response) => {
-          details = response.json();
-        }
-      );
-    }
-  }, [usrAddr]);
   const [balance, setBalance] = useState("");
   const [hide, setHide] = useState(true);
   const fetchBalance = () => {
@@ -30,25 +22,26 @@ const UserDetails = ({
       setHide(true);
     }
   };
-  if (logInStatus) {
-    // fetcher(usrAddr);
+  if (usrDetails.name != undefined) {
     return (
       <div>
         <p>
           <b>Name:</b>
-          <span className="mx-3 text-primary">{details.name}</span>
+          <span className="mx-3 text-primary">{usrDetails.name}</span>
         </p>
         <p>
           <b>Phone:</b>{" "}
-          <span className="mx-3 text-primary">{details.phone_no}</span>
+          <span className="mx-3 text-primary">{usrDetails.phone_no}</span>
         </p>
         <p>
           <b>Email:</b>{" "}
-          <span className="mx-3 text-primary">{details.email}</span>
+          <span className="mx-3 text-primary">{usrDetails.email}</span>
         </p>
         <p>
           <b>Delivery address:</b>{" "}
-          <span className="mx-3 text-primary">{details.delivery_address}</span>
+          <span className="mx-3 text-primary">
+            {usrDetails.delivery_address}
+          </span>
         </p>
         <button className="btn btn-outline-primary" onClick={fetchBalance}>
           {hide == true ? `Check balance` : `Hide balance`}
@@ -63,6 +56,8 @@ const UserDetails = ({
         setUsrAddr={setUsrAddr}
         setMyContract={setMyContract}
         setUserName={setUserName}
+        usrDetails={usrDetails}
+        setUsrDetails={setUsrDetails}
       />
     );
   }

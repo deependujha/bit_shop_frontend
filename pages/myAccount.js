@@ -8,6 +8,8 @@ const account = ({
   setUsrAddr,
   setMyContract,
   setUserName,
+  usrDetails,
+  setUsrDetails,
 }) => {
   return (
     <Account
@@ -17,6 +19,8 @@ const account = ({
       setUsrAddr={setUsrAddr}
       setMyContract={setMyContract}
       setUserName={setUserName}
+      usrDetails={usrDetails}
+      setUsrDetails={setUsrDetails}
     />
   );
 };
