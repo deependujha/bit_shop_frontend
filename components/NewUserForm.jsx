@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 
-const NewUserForm = ({ usrAddr, setUserName }) => {
+const NewUserForm = ({
+  usrAddr,
+  setUserName,
+  setLogInStatus,
+  setUsrDetails,
+}) => {
   const router = useRouter();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -23,6 +28,13 @@ const NewUserForm = ({ usrAddr, setUserName }) => {
       .then((response) => {
         console.log(response);
         setUserName(`Hii, ${name}`);
+        setLogInStatus(true);
+        setUsrDetails({
+          name,
+          email,
+          phone_no: phone,
+          delivery_address: delAddr,
+        });
         router.push("/");
       })
       .catch((e) => {

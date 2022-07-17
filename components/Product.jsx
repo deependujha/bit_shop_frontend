@@ -2,9 +2,10 @@ import React from "react";
 import style from "../styles/Product.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import axios from "axios";
 
-const Product = ({ type, prd, myContract }) => {
-  const clk = () => {
+const Product = ({ type, prd, myContract, usrAddr }) => {
+  const clk = async () => {
     if (type === "buy") {
       myContract
         .purchaseItem(prd.product_id, prd.sellerAddress, prd.price)
@@ -13,7 +14,17 @@ const Product = ({ type, prd, myContract }) => {
           return tx
             .wait()
             .then(() => {
-              alert("Order placed successfully successfully");
+              axios
+                .post(`http://159.223.186.223:3200/order/`, {
+                  walletAddress: usrAddr,
+                  product_id: prd.product_id,
+                })
+                .then(() => {
+                  alert("Order placed successfully");
+                })
+                .catch((e) => {
+                  alert(`an error occurred: ${e}`);
+                });
             })
             .catch((err) => {
               alert("You don't have sufficient balance", err.message);
@@ -24,6 +35,34 @@ const Product = ({ type, prd, myContract }) => {
           alert("You don't have sufficient balance");
         });
     } else {
+      myContract
+        .cancelOrder(prd.product_id)
+        .then((tx) => {
+          console.log("transaction occured : ", tx.hash);
+          return tx
+            .wait()
+            .then(() => {
+              axios
+                .delete(`http://159.223.186.223:3200/order/`, {
+                  walletAddress: usrAddr,
+                  product_id: prd.product_id,
+                })
+                .then((reply) => {
+                  console.log(reply);
+                  alert("Order cancelled successfully");
+                })
+                .catch((e) => {
+                  alert(`an error occurred: ${e}`);
+                });
+            })
+            .catch((err) => {
+              alert("You don't have sufficient balance", err.message);
+              console.log(`Error occurred: ${e}`);
+            });
+        })
+        .catch((err) => {
+          alert("You don't have sufficient balance");
+        });
     }
     console.log(`button clicked`);
   };
@@ -66,14 +105,14 @@ const Product = ({ type, prd, myContract }) => {
             secretKey();
           }}
         >
-          secret Key
+          Delivery Key
         </button>
         <button
           className={`btn ${
             type == "buy" ? "btn-primary" : "btn-danger"
-          }  ms-3`}
+          } ms-1 `}
           style={{}}
-          onClick={clk}
+          onClick={async () => clk()}
         >
           {type == "buy" ? `Buy Now` : `Cancel`}
         </button>

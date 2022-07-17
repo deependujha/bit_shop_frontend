@@ -1,14 +1,14 @@
 import styles from "../styles/Home.module.css";
 import Product from "../components/Product";
 
-export default function Home({ data,myContract }) {
+export default function Home({ data,myContract,usrAddr }) {
   return (
     <div className="my-3">
       {data.map((prd) => {
         if (prd.bought_by == "") {
           return (
             <span key={prd.product_id}>
-              <Product type="buy" prd={prd} myContract={myContract} />
+              <Product type="buy" prd={prd} myContract={myContract} usrAddr={usrAddr}/>
             </span>
           );
         }

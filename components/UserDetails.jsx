@@ -165,6 +165,7 @@ const UserDetails = ({
         setUserName={setUserName}
         usrDetails={usrDetails}
         setUsrDetails={setUsrDetails}
+        setLogInStatus={setLogInStatus}
       />
     );
   }
