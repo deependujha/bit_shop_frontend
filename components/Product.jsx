@@ -42,10 +42,18 @@ const Product = ({ type, prd, myContract, usrAddr }) => {
           return tx
             .wait()
             .then(() => {
+              const myTempData = {
+                walletAddress: usrAddr,
+                product_id: prd.product_id,
+              };
               axios
                 .delete(`http://159.223.186.223:3200/order/`, {
-                  walletAddress: usrAddr,
-                  product_id: prd.product_id,
+                  headers: {
+                    Accept: "*/*",
+                    "User-Agent":
+                      "Thunder Client (https://www.thunderclient.com)",
+                  },
+                  data: myTempData,
                 })
                 .then((reply) => {
                   console.log(reply);
