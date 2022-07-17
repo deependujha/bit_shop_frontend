@@ -50,8 +50,6 @@ const Product = ({ type, prd, myContract, usrAddr }) => {
                 .delete(`http://159.223.186.223:3200/order/`, {
                   headers: {
                     Accept: "*/*",
-                    "User-Agent":
-                      "Thunder Client (https://www.thunderclient.com)",
                   },
                   data: myTempData,
                 })
@@ -72,7 +70,7 @@ const Product = ({ type, prd, myContract, usrAddr }) => {
           alert("You don't have sufficient balance");
         });
     }
-    console.log(`button clicked`);
+    // console.log(`button clicked`);
   };
   const secretKey = async () => {
     myContract
