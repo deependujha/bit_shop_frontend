@@ -99,14 +99,19 @@ const Product = ({ type, prd, myContract, usrAddr }) => {
 
       <p>
         price: <b>{prd.price} MDR</b>
-        <button
-          className={`btn btn-success ms-4 `}
-          onClick={async () => {
-            secretKey();
-          }}
+        <span
+          className="ms-4"
+          style={{ visibility: `${type === "cancel" ? "visible" : "hidden"}` }}
         >
-          Delivery Key
-        </button>
+          <button
+            className={`btn btn-success  `}
+            onClick={async () => {
+              secretKey();
+            }}
+          >
+            Delivery Key
+          </button>
+        </span>
         <button
           className={`btn ${
             type == "buy" ? "btn-primary" : "btn-danger"
