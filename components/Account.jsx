@@ -8,6 +8,7 @@ const Account = ({
   usrAddr,
   setUsrAddr,
   setMyContract,
+  myContract,
   setUserName,
   usrDetails,
   setUsrDetails,
@@ -25,6 +26,7 @@ const Account = ({
             setUserName={setUserName}
             usrDetails={usrDetails}
             setUsrDetails={setUsrDetails}
+            myContract={myContract}
           />
         </div>
         <div

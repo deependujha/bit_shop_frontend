@@ -7,6 +7,7 @@ const account = ({
   usrAddr,
   setUsrAddr,
   setMyContract,
+  myContract,
   setUserName,
   usrDetails,
   setUsrDetails,
@@ -18,6 +19,7 @@ const account = ({
       usrAddr={usrAddr}
       setUsrAddr={setUsrAddr}
       setMyContract={setMyContract}
+      myContract={myContract}
       setUserName={setUserName}
       usrDetails={usrDetails}
       setUsrDetails={setUsrDetails}
