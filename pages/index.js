@@ -18,7 +18,7 @@ export default function Home({ data }) {
 // This gets called on every request
 export async function getServerSideProps() {
   // Fetch data from external API
-  const res = await fetch(`http://localhost:3000/product/`);
+  const res = await fetch(`http://159.223.186.223:3200/product/`);
   const data = await res.json(); // Pass data to the page via props
   return { props: { data } };
 }

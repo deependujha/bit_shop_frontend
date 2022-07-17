@@ -9,14 +9,32 @@ function MyApp({ Component, pageProps }) {
     import("bootstrap/dist/js/bootstrap");
   }, []);
 
+  const [usrAddr, setUsrAddr] = useState("");
+  const [myContract, setMyContract] = useState("");
+  const [logInStatus, setLogInStatus] = useState(false);
+
   return (
     <>
       <Head>
         <title>BIT-Shop</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <Navbar />
-      <Component {...pageProps} />
+      <Navbar
+        usrAddr={usrAddr}
+        setUsrAddr={setUsrAddr}
+        setMyContract={setMyContract}
+        logInStatus={logInStatus}
+        setLogInStatus={setLogInStatus}
+      />
+      <Component
+        {...pageProps}
+        logInStatus={logInStatus}
+        setLogInStatus={setLogInStatus}
+        usrAddr={usrAddr}
+        setUsrAddr={setUsrAddr}
+        setMyContract={setMyContract}
+        myContract={myContract}
+      />
     </>
   );
 }

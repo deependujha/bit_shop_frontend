@@ -3,12 +3,17 @@ import Link from "next/link";
 import { ethers } from "ethers";
 import style from "../styles/Navbar.module.css";
 import ABI from "/abi";
+import useSWR from "swr";
+const fetcher = async (addr) => {
+  const Data = await fetch(`http://159.223.186.223:3200/account/asdfhoia`);
+  const data = await Data.json();
+  return data;
+};
 
-const Navbar = (props) => {
+const Navbar = ({ usrAddr, setUsrAddr, setMyContract, logInStatus, setLogInStatus }) => {
   const [current, setCurrent] = useState("home");
   const [con, setCon] = useState(false);
-  const [myAddr, setMyAddr] = useState("");
-  const [myContract, setMyContract] = useState("");
+  const [userName, setUserName] = useState("");
 
   const connectWithMetaMask = async () => {
     if (!window.ethereum) {
@@ -47,33 +52,50 @@ const Navbar = (props) => {
           setMyContract(contract);
           // console.log(`contract address: ${contract.address}`);
           // console.log("Account:", await signer.getAddress());
-          let myaddress = await signer.getAddress();
-          setMyAddr(myaddress);
-          setCon(!con);
+          let usrAddress = await signer.getAddress();
+
+          setUsrAddr(usrAddress);
         }
       } catch (e) {
         alert(`an error occurred: ${e}`);
       }
     }
   };
-  const btnClick = () => {
+  const btnClick = async () => {
     if (con) {
       setMyContract("");
-      setMyAddr("");
+      setusrAddr("");
       setCon(false);
+      setUserName("");
     } else {
       connectWithMetaMask();
+      try {
+        // const { data, error } = useSWR("name", fetcher);
+        const data = await fetcher(usrAddr);
+        console.log(data);
+        if (data.name == undefined) {
+          setUserName("Please create your profile!");
+          setCon(false);
+        } else {
+          setUserName(`Hii, ${data.name}`);
+          setCon(true);
+
+        }
+      } catch (e) {
+        console.log(`an error occurred: ${e}`);
+      }
     }
   };
 
   const navBtnClick = (which) => {
     setCurrent(which);
   };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
         <Link href="/">
-          <a className="navbar-brand">BIT-shop</a>
+          <a className="navbar-brand">D-shop</a>
         </Link>
         <button
           className="navbar-toggler"
@@ -141,12 +163,12 @@ const Navbar = (props) => {
                     navBtnClick("account");
                   }}
                 >
-                  My account
+                 {logInStatus?`My account`:`Create account`}
                 </a>
               </li>
             </Link>
           </ul>
-          <span className="mx-3">{myAddr != "" && `Hii, Deependu`}</span>
+          <span className="mx-3"><h5>{userName}</h5></span>
           <button
             className={`btn ${con ? `btn-danger` : `btn-info`}`}
             onClick={btnClick}
