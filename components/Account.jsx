@@ -10,7 +10,7 @@ const Account = ({
   setMyContract,
   setUserName,
   usrDetails,
-  setUsrDetails
+  setUsrDetails,
 }) => {
   return (
     <div className="container my-4">
@@ -30,12 +30,13 @@ const Account = ({
         <div
           className="col-sm"
           style={{
-            // backgroundColor: "#e6e6e6",
-            height: "50vh",
-            width: "300px",
+            // backgroundColor: "red",
+            height: "400px",
+            width: "250px",
             borderRadius: "15px",
             overflow: "hidden",
             position: "relative",
+            margin: "auto",
           }}
         >
           <Image

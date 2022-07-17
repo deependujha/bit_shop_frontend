@@ -43,10 +43,30 @@ const UserDetails = ({
             {usrDetails.delivery_address}
           </span>
         </p>
-        <button className="btn btn-outline-primary" onClick={fetchBalance}>
-          {hide == true ? `Check balance` : `Hide balance`}
-        </button>
-        <b className="mx-5 text-success">{balance}</b>
+        <div className="my-2">
+          <button className="btn btn-outline-primary" onClick={fetchBalance}>
+            {hide == true ? `Check balance` : `Hide balance`}
+          </button>
+          <b className="mx-5 text-success">{balance}</b>
+        </div>
+        <div className="my-2">
+          <button
+            className="btn btn-outline-primary me-3"
+            onClick={fetchBalance}
+          >
+            Purchase Mudra
+          </button>
+          <input type="number" placeholder="Amount of Mudra" />
+        </div>
+        <div className="my-2">
+          <button
+            className="btn btn-outline-primary me-3"
+            onClick={fetchBalance}
+          >
+            Cash In Mudra
+          </button>
+          <input type="number" placeholder="Amount of Mudra" />
+        </div>
       </div>
     );
   } else {
