@@ -2,19 +2,47 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { ethers } from "ethers";
 import style from "../styles/Navbar.module.css";
+import { useRouter } from "next/router";
 import ABI from "/abi";
-import useSWR from "swr";
+import axios from "axios";
 const fetcher = async (addr) => {
-  const Data = await fetch(`http://159.223.186.223:3200/account/asdfhoia`);
+  const Data = await fetch(`http://159.223.186.223:3200/account/${addr}`);
   const data = await Data.json();
   return data;
 };
 
-const Navbar = ({ usrAddr, setUsrAddr, setMyContract, logInStatus, setLogInStatus }) => {
+const Navbar = ({
+  usrAddr,
+  setUsrAddr,
+  setMyContract,
+  logInStatus,
+  setLogInStatus,
+  userName,
+  setUserName,
+}) => {
+  const router = useRouter();
+
   const [current, setCurrent] = useState("home");
   const [con, setCon] = useState(false);
-  const [userName, setUserName] = useState("");
-
+  useEffect(() => {
+    if (usrAddr != "") {
+      axios
+        .get(`http://159.223.186.223:3200/account/${usrAddr}`)
+        .then((response) => {
+          // console.log(response.data.name);
+          if (response.data.name === undefined) {
+            router.push("/myAccount");
+            setUserName("Please create an account");
+          } else {
+            setUserName(`Hii, ${response.data.name}`);
+            setCon(true);
+          }
+        })
+        .catch((e) => {
+          alert(`an error occurred: ${e}`);
+        });
+    }
+  }, [usrAddr]);
   const connectWithMetaMask = async () => {
     if (!window.ethereum) {
       alert("Please install metamask");
@@ -53,7 +81,7 @@ const Navbar = ({ usrAddr, setUsrAddr, setMyContract, logInStatus, setLogInStatu
           // console.log(`contract address: ${contract.address}`);
           // console.log("Account:", await signer.getAddress());
           let usrAddress = await signer.getAddress();
-
+          // console.log(usrAddress);
           setUsrAddr(usrAddress);
         }
       } catch (e) {
@@ -69,21 +97,6 @@ const Navbar = ({ usrAddr, setUsrAddr, setMyContract, logInStatus, setLogInStatu
       setUserName("");
     } else {
       connectWithMetaMask();
-      try {
-        // const { data, error } = useSWR("name", fetcher);
-        const data = await fetcher(usrAddr);
-        console.log(data);
-        if (data.name == undefined) {
-          setUserName("Please create your profile!");
-          setCon(false);
-        } else {
-          setUserName(`Hii, ${data.name}`);
-          setCon(true);
-
-        }
-      } catch (e) {
-        console.log(`an error occurred: ${e}`);
-      }
     }
   };
 
@@ -163,12 +176,14 @@ const Navbar = ({ usrAddr, setUsrAddr, setMyContract, logInStatus, setLogInStatu
                     navBtnClick("account");
                   }}
                 >
-                 {logInStatus?`My account`:`Create account`}
+                  {logInStatus ? `My account` : `Create account`}
                 </a>
               </li>
             </Link>
           </ul>
-          <span className="mx-3"><h5>{userName}</h5></span>
+          <span className="mx-3">
+            <h5>{userName}</h5>
+          </span>
           <button
             className={`btn ${con ? `btn-danger` : `btn-info`}`}
             onClick={btnClick}

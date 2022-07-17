@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import NewUserForm from "./NewUserForm";
 
-const UserDetails = ({ logInStatus, setLogInStatus, usrAddr, setUsrAddr,setMyContract }) => {
+const UserDetails = ({ logInStatus, setLogInStatus, usrAddr, setUsrAddr,setMyContract,setUserName }) => {
   const [balance, setBalance] = useState("");
   const [hide, setHide] = useState(true);
   const fetchBalance = () => {
@@ -40,7 +40,7 @@ const UserDetails = ({ logInStatus, setLogInStatus, usrAddr, setUsrAddr,setMyCon
       </div>
     );
   } else {
-    return <NewUserForm usrAddr={usrAddr} setUsrAddr={setUsrAddr} setMyContract={setMyContract}/>;
+    return <NewUserForm usrAddr={usrAddr} setUsrAddr={setUsrAddr} setMyContract={setMyContract} setUserName={setUserName}/>;
   }
 };
 

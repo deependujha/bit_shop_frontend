@@ -1,7 +1,14 @@
 import React from "react";
 import Account from "../components/Account";
 
-const account = ({ logInStatus, setLogInStatus, usrAddr, setUsrAddr,setMyContract }) => {
+const account = ({
+  logInStatus,
+  setLogInStatus,
+  usrAddr,
+  setUsrAddr,
+  setMyContract,
+  setUserName,
+}) => {
   return (
     <Account
       logInStatus={logInStatus}
@@ -9,6 +16,7 @@ const account = ({ logInStatus, setLogInStatus, usrAddr, setUsrAddr,setMyContrac
       usrAddr={usrAddr}
       setUsrAddr={setUsrAddr}
       setMyContract={setMyContract}
+      setUserName={setUserName}
     />
   );
 };

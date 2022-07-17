@@ -7,7 +7,8 @@ const Account = ({
   setLogInStatus,
   usrAddr,
   setUsrAddr,
-  setMyContract
+  setMyContract,
+  setUserName
 }) => {
   return (
     <div className="container my-4">
@@ -19,6 +20,7 @@ const Account = ({
             usrAddr={usrAddr}
             setUsrAddr={setUsrAddr}
             setMyContract={setMyContract}
+            setUserName={setUserName}
           />
         </div>
         <div

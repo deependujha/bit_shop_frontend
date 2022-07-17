@@ -12,6 +12,7 @@ function MyApp({ Component, pageProps }) {
   const [usrAddr, setUsrAddr] = useState("");
   const [myContract, setMyContract] = useState("");
   const [logInStatus, setLogInStatus] = useState(false);
+  const [userName, setUserName] = useState("");
 
   return (
     <>
@@ -25,6 +26,8 @@ function MyApp({ Component, pageProps }) {
         setMyContract={setMyContract}
         logInStatus={logInStatus}
         setLogInStatus={setLogInStatus}
+        userName={userName}
+        setUserName={setUserName}
       />
       <Component
         {...pageProps}
@@ -34,6 +37,7 @@ function MyApp({ Component, pageProps }) {
         setUsrAddr={setUsrAddr}
         setMyContract={setMyContract}
         myContract={myContract}
+        setUserName={setUserName}
       />
     </>
   );
