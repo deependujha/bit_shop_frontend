@@ -4,6 +4,7 @@ import Image from "next/image";
 const About = () => {
   return (
     <div className="container my-3">
+      <h4 className="my-3 d-flex justify-content-center">|| श्री ||</h4>
       <h4>Namastey! 🙏</h4>
       <div className="my-2">
         ➤ Hi, I'm Deependu Jha, a third-year ECE student at BIT Mesra, Ranchi. I
@@ -18,8 +19,7 @@ const About = () => {
           when they purchase a product, balance is deducted from their balance
           but is not sent to the seller's account. Rather, balance is kept as it
           is in the smart-contract. Once the product is delivered, then only
-          sellers receive their share of money. Hence, preventing any
-          fraud.
+          sellers receive their share of money. Hence, preventing any fraud.
         </div>
       </div>
       <div className="my-4">
