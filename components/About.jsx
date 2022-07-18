@@ -18,8 +18,8 @@ const About = () => {
           when they purchase a product, balance is deducted from their balance
           but is not sent to the seller's account. Rather, balance is kept as it
           is in the smart-contract. Once the product is delivered, then only
-          seller's receive their share of money. Hence, preventing any
-          fraudulent.
+          sellers receive their share of money. Hence, preventing any
+          fraud.
         </div>
       </div>
       <div className="my-4">
@@ -41,9 +41,9 @@ const About = () => {
             <div className="row">
               <div className="col-sm">
                 <ul>
-                  <li>User's can buy 1000 Mudras (MDR) for 1 Ether.</li>
+                  <li>Users can buy 1000 Mudras (MDR) for 1 Ether.</li>
                   <li>
-                    User's can also cashin their Mudras (MDR) and get their
+                    Users can also cash in their Mudras (MDR) and get their
                     ethers in the wallet.
                   </li>
                   <li>
