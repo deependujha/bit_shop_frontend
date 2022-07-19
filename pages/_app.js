@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>BIT-Shop</title>
+        <title>D-Shop</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <Navbar
